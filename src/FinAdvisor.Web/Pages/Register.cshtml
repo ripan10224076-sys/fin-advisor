@@ -1,0 +1,34 @@
+@page "/register"
+@model FinAdvisor.Web.Pages.RegisterModel
+@{
+    Layout = "_PublicLayout";
+    ViewData["Title"] = "Daftar UMKM";
+}
+
+<section class="card register-card">
+    <div class="section-heading">
+        <p class="eyebrow">Daftar UMKM</p>
+        <h1>Buat akun usaha</h1>
+        <p class="hint">Isi data usaha agar rekomendasi pembiayaan lebih mudah ditelusuri dan tersimpan rapi.</p>
+    </div>
+    <form method="post" data-loading>
+        <div asp-validation-summary="ModelOnly" class="validation"></div>
+        <div class="form-grid">
+            <div class="form-group"><label asp-for="Input.FullName">Nama Lengkap</label><input asp-for="Input.FullName" /><span asp-validation-for="Input.FullName" class="validation"></span></div>
+            <div class="form-group"><label asp-for="Input.BusinessName">Nama UMKM</label><input asp-for="Input.BusinessName" /><span asp-validation-for="Input.BusinessName" class="validation"></span></div>
+            <div class="form-group"><label asp-for="Input.BusinessCategory">Kategori Usaha</label><input asp-for="Input.BusinessCategory" placeholder="Mikro, kecil, menengah" /><span asp-validation-for="Input.BusinessCategory" class="validation"></span></div>
+            <div class="form-group"><label asp-for="Input.BusinessType">Jenis Usaha</label><input asp-for="Input.BusinessType" placeholder="Kuliner, jasa, perdagangan" /><span asp-validation-for="Input.BusinessType" class="validation"></span></div>
+            <div class="form-group"><label asp-for="Input.City">Kota</label><input asp-for="Input.City" /><span asp-validation-for="Input.City" class="validation"></span></div>
+            <div class="form-group"><label asp-for="Input.Province">Provinsi</label><input asp-for="Input.Province" /><span asp-validation-for="Input.Province" class="validation"></span></div>
+            <div class="form-group"><label asp-for="Input.Phone">Nomor HP</label><input asp-for="Input.Phone" /><span asp-validation-for="Input.Phone" class="validation"></span></div>
+            <div class="form-group"><label asp-for="Input.Email">Email</label><input asp-for="Input.Email" autocomplete="email" /><span asp-validation-for="Input.Email" class="validation"></span></div>
+            <div class="form-group"><label asp-for="Input.Password">Password</label><input asp-for="Input.Password" type="password" autocomplete="new-password" /><span asp-validation-for="Input.Password" class="validation"></span></div>
+            <div class="form-group"><label asp-for="Input.ConfirmPassword">Konfirmasi Password</label><input asp-for="Input.ConfirmPassword" type="password" autocomplete="new-password" /><span asp-validation-for="Input.ConfirmPassword" class="validation"></span></div>
+        </div>
+        <div class="form-group"><label asp-for="Input.Address">Alamat</label><textarea asp-for="Input.Address" rows="3"></textarea><span asp-validation-for="Input.Address" class="validation"></span></div>
+        <div class="result-actions">
+            <button class="btn-primary" type="submit">Daftar dan Masuk</button>
+            <a class="btn-secondary" asp-page="/Login">Sudah punya akun? Login</a>
+        </div>
+    </form>
+</section>

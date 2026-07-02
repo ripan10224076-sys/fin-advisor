@@ -1,0 +1,81 @@
+@page "/"
+@model FinAdvisor.Web.Pages.IndexModel
+@{
+    Layout = "_PublicLayout";
+    ViewData["Title"] = "Beranda";
+}
+
+<section class="landing-hero">
+    <div>
+        <p class="eyebrow">Platform Rekomendasi Pembiayaan UMKM</p>
+        <h1>Temukan sumber pembiayaan yang lebih tepat untuk usaha Anda.</h1>
+        <p class="hero-copy">FIN-ADVISOR membantu pemilik UMKM memahami pilihan pembiayaan melalui sistem pakar berbasis Forward Chaining yang transparan dan mudah digunakan.</p>
+        <div class="result-actions">
+            <a class="btn-primary" asp-page="/Register">Daftar Gratis</a>
+            <a class="btn-secondary" asp-page="/Login">Login UMKM</a>
+        </div>
+    </div>
+    <div class="hero-card">
+        <span class="badge">Bank</span>
+        <span class="badge">Koperasi</span>
+        <span class="badge">Fintech Legal</span>
+        <h2>Analisis berbasis fakta usaha</h2>
+        <p>Arus kas, agunan, nominal dana, legalitas, riwayat kredit, dan urgensi dana dicocokkan dengan basis aturan pembiayaan.</p>
+    </div>
+</section>
+
+<section class="landing-section" id="fitur">
+    <div class="section-heading">
+        <p class="eyebrow">Keunggulan</p>
+        <h2>Dibuat untuk pemilik UMKM non-teknis</h2>
+    </div>
+    <div class="feature-grid">
+        <div><h3>Mudah Dipahami</h3><p>Setiap hasil dilengkapi alasan, fakta cocok, rule aktif, confidence, risiko, dan saran berikutnya.</p></div>
+        <div><h3>Riwayat Rapi</h3><p>Semua konsultasi tersimpan dan dapat dicari kembali kapan saja.</p></div>
+        <div><h3>Profil Usaha</h3><p>Data UMKM dapat dikelola agar konsultasi lebih konsisten.</p></div>
+        <div><h3>Aturan Transparan</h3><p>Admin dapat mengelola rule tanpa mengubah source code.</p></div>
+    </div>
+</section>
+
+<section class="landing-section">
+    <div class="section-heading">
+        <p class="eyebrow">Cara Kerja AI</p>
+        <h2>Forward Chaining yang dapat ditelusuri</h2>
+    </div>
+    <div class="process-grid">
+        <div><span>1</span><h3>Isi Fakta Usaha</h3><p>Masukkan kondisi arus kas, agunan, kebutuhan dana, kredit, dan legalitas.</p></div>
+        <div><span>2</span><h3>Cocokkan Rule</h3><p>Sistem mengevaluasi aturan aktif satu per satu berdasarkan fakta.</p></div>
+        <div><span>3</span><h3>Dapatkan Rekomendasi</h3><p>Hasil menampilkan opsi pembiayaan dan penjelasan yang mudah dipahami.</p></div>
+    </div>
+</section>
+
+<section class="landing-section">
+    <div class="section-heading">
+        <p class="eyebrow">Manfaat</p>
+        <h2>Lebih siap sebelum mengajukan pembiayaan</h2>
+    </div>
+    <div class="feature-grid">
+        <div><h3>Bank</h3><p>Untuk usaha dengan legalitas lengkap dan agunan memadai.</p></div>
+        <div><h3>Koperasi</h3><p>Untuk kebutuhan menengah dengan syarat yang cenderung lebih fleksibel.</p></div>
+        <div><h3>Fintech</h3><p>Untuk kebutuhan kecil dan cepat, dengan perhatian pada legalitas platform.</p></div>
+        <div><h3>Tunda Pinjaman</h3><p>Untuk kondisi risiko tinggi agar usaha memperbaiki arus kas lebih dulu.</p></div>
+    </div>
+</section>
+
+<section class="landing-section" id="faq">
+    <div class="section-heading">
+        <p class="eyebrow">FAQ</p>
+        <h2>Pertanyaan Umum</h2>
+    </div>
+    <div class="feature-grid">
+        <div><h3>Apakah ini machine learning?</h3><p>Tidak. FIN-ADVISOR memakai sistem pakar berbasis rule dan Forward Chaining.</p></div>
+        <div><h3>Apakah hasilnya final?</h3><p>Hasil adalah rekomendasi awal. Pengguna tetap perlu membaca syarat dari lembaga pembiayaan.</p></div>
+        <div><h3>Apakah data konsultasi tersimpan?</h3><p>Ya, riwayat konsultasi tersimpan pada akun UMKM.</p></div>
+        <div><h3>Siapa yang mengelola rule?</h3><p>Administrator dapat menambah, mengubah, mengaktifkan, dan menonaktifkan rule.</p></div>
+    </div>
+</section>
+
+<section class="cta-band">
+    <h2>Mulai pahami opsi pembiayaan usaha Anda hari ini.</h2>
+    <a class="btn-primary" asp-page="/Register">Buat Akun UMKM</a>
+</section>

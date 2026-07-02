@@ -1,0 +1,38 @@
+@page "/admin/statistics"
+@model FinAdvisor.Web.Pages.Admin.StatisticsModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Statistik";
+}
+
+<section class="admin-stats">
+    <div class="stat-card"><span>@Model.Stats.TotalUsers</span><small>Total User</small></div>
+    <div class="stat-card"><span>@Model.Stats.TotalCustomers</span><small>Total UMKM</small></div>
+    <div class="stat-card"><span>@Model.Stats.TotalConsultations</span><small>Total Konsultasi</small></div>
+    <div class="stat-card"><span>@Model.Stats.TodayConsultations</span><small>Hari Ini</small></div>
+    <div class="stat-card"><span>@Model.Stats.TotalRules</span><small>Total Rule</small></div>
+    <div class="stat-card"><span>@Model.Stats.ActiveRules</span><small>Rule Aktif</small></div>
+</section>
+
+<section class="dashboard-grid">
+    <div class="card chart-card">
+        <p class="eyebrow">Grafik Pembiayaan</p>
+        <h2>Distribusi Aktivitas</h2>
+        <div class="bar-chart">
+            <span style="height: 44%"></span>
+            <span style="height: 70%"></span>
+            <span style="height: 54%"></span>
+            <span style="height: 88%"></span>
+            <span style="height: 62%"></span>
+        </div>
+    </div>
+    <div class="card">
+        <p class="eyebrow">Insight</p>
+        <h2>Catatan Monitoring</h2>
+        <ul>
+            <li>Perhatikan rekomendasi dengan skor rendah untuk evaluasi edukasi.</li>
+            <li>Rule aktif perlu ditinjau saat kebijakan pembiayaan berubah.</li>
+            <li>Riwayat konsultasi dapat dicetak sebagai laporan.</li>
+        </ul>
+    </div>
+</section>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FIN-ADVISOR</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header class="topbar">
+        <div class="shell nav-shell">
+            <a class="brand" asp-page="/Index">
+                <span class="brand-mark">FA</span>
+                <span>
+                    <strong>FIN-ADVISOR</strong>
+                    <small>Pembiayaan UMKM</small>
+                </span>
+            </a>
+            <nav class="nav-links">
+                <a asp-page="/Index">Dashboard</a>
+                <a asp-page="/Profile">Profil UMKM</a>
+                <a asp-page="/History">Riwayat</a>
+                <a asp-page="/Help">Bantuan</a>
+                <a asp-page="/About">Tentang</a>
+                <a asp-page="/Admin/Rules">Admin Rule</a>
+            </nav>
+            <button class="icon-button" type="button" id="themeToggle" title="Dark mode">DM</button>
+        </div>
+    </header>
+
+    <main class="shell page-shell">
+        @if (TempData["Toast"] is string toast)
+        {
+            <div class="toast">@toast</div>
+        }
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <div class="shell">
+            FIN-ADVISOR - Rekomendasi Pembiayaan UMKM
+        </div>
+    </footer>
+    <script>
+        const savedTheme = localStorage.getItem("finadvisor-theme");
+        if (savedTheme === "dark") document.body.classList.add("dark");
+        document.getElementById("themeToggle")?.addEventListener("click", () => {
+            document.body.classList.toggle("dark");
+            localStorage.setItem("finadvisor-theme", document.body.classList.contains("dark") ? "dark" : "light");
+        });
+        document.querySelectorAll("form[data-loading]").forEach(form => {
+            form.addEventListener("submit", () => {
+                const button = form.querySelector("button[type='submit']");
+                if (button) button.innerText = "Memproses...";
+            });
+        });
+    </script>
+</body>
+</html>

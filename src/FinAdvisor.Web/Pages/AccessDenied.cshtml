@@ -1,0 +1,15 @@
+@page "/access-denied"
+@{
+    Layout = "_PublicLayout";
+    ViewData["Title"] = "Akses Ditolak";
+}
+
+<section class="card readable">
+    <p class="eyebrow">Akses Ditolak</p>
+    <h1>Anda tidak memiliki akses ke halaman ini.</h1>
+    <p>Silakan masuk menggunakan akun yang sesuai dengan area yang ingin dibuka.</p>
+    <div class="result-actions">
+        <a class="btn-primary" asp-page="/Login">Login UMKM</a>
+        <a class="btn-secondary" asp-page="/Admin/Login">Login Admin</a>
+    </div>
+</section>

@@ -1,0 +1,31 @@
+@page "/admin/users"
+@model FinAdvisor.Web.Pages.Admin.UsersModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Kelola User";
+}
+
+<section class="card">
+    <div class="section-heading">
+        <p class="eyebrow">Kelola User</p>
+        <h1>Data UMKM Terdaftar</h1>
+    </div>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Nama</th><th>Email</th><th>UMKM</th><th>Kategori</th><th>Kota</th><th>Status</th></tr></thead>
+            <tbody>
+            @foreach (var user in Model.Customers)
+            {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                    <td>@user.BusinessName</td>
+                    <td>@user.BusinessCategory</td>
+                    <td>@user.City</td>
+                    <td><span class="badge">@(user.IsActive ? "Aktif" : "Nonaktif")</span></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</section>

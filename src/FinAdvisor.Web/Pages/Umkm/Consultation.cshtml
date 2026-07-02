@@ -1,0 +1,49 @@
+@page "/umkm/consultation"
+@model FinAdvisor.Web.Pages.Umkm.ConsultationModel
+@{
+    Layout = "_CustomerLayout";
+    ViewData["Title"] = "Konsultasi AI";
+}
+
+<section class="workspace-grid">
+    <div class="card consultation-card">
+        <div class="section-heading">
+            <p class="eyebrow">Konsultasi AI</p>
+            <h1>Analisis Pembiayaan</h1>
+        </div>
+        <div class="steps">
+            <span class="active">1. Fakta</span>
+            <span>2. Analisis</span>
+            <span>3. Rekomendasi</span>
+        </div>
+        <form method="post" data-loading>
+            <div asp-validation-summary="ModelOnly" class="validation"></div>
+            <div class="form-group">
+                <label asp-for="BusinessName">Nama usaha</label>
+                <input asp-for="BusinessName" />
+                <p class="hint">Pemilik: @Model.OwnerName</p>
+            </div>
+            <div class="form-grid">
+                <div class="form-group"><label asp-for="Profile.ArusKas">Arus kas</label><select asp-for="Profile.ArusKas" asp-items="Html.GetEnumSelectList<ArusKas>()"></select></div>
+                <div class="form-group"><label asp-for="Profile.AsetAgunan">Agunan</label><select asp-for="Profile.AsetAgunan" asp-items="Html.GetEnumSelectList<AsetAgunan>()"></select></div>
+                <div class="form-group"><label asp-for="Profile.KebutuhanDana">Nominal dana</label><input asp-for="Profile.KebutuhanDana" type="number" min="1" step="100000" /><span asp-validation-for="Profile.KebutuhanDana" class="validation"></span></div>
+                <div class="form-group"><label asp-for="Profile.RiwayatKredit">Riwayat kredit</label><select asp-for="Profile.RiwayatKredit" asp-items="Html.GetEnumSelectList<RiwayatKredit>()"></select></div>
+            </div>
+            <div class="switch-row">
+                <label class="toggle"><input asp-for="Profile.LegalitasLengkap" type="checkbox" /><span></span>Legalitas lengkap</label>
+                <label class="toggle"><input asp-for="Profile.ButuhDanaCepat" type="checkbox" /><span></span>Dana mendesak</label>
+            </div>
+            <button type="submit" class="btn-primary">Analisis Sekarang</button>
+        </form>
+    </div>
+    <aside class="info-panel">
+        <h3>Proses Rekomendasi</h3>
+        <p>Sistem mencocokkan fakta usaha dengan aturan pembiayaan aktif, lalu menampilkan alasan rekomendasi dengan bahasa sederhana.</p>
+        <div class="mini-list"><span>Fakta usaha</span><span>Rule aktif</span><span>Confidence</span><span>Saran berikutnya</span></div>
+    </aside>
+</section>
+
+@if (Model.Hasil is not null)
+{
+    <partial name="_RecommendationResult" model="Model.Hasil" />
+}

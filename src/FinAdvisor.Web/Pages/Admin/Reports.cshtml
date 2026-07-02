@@ -1,0 +1,12 @@
+@page "/admin/reports"
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Laporan";
+}
+
+<section class="card readable">
+    <p class="eyebrow">Laporan</p>
+    <h1>Laporan Konsultasi</h1>
+    <p>Gunakan riwayat konsultasi dan dashboard admin untuk memantau pola rekomendasi pembiayaan UMKM.</p>
+    <button class="btn-secondary" onclick="window.print()">Export PDF / Print</button>
+</section>

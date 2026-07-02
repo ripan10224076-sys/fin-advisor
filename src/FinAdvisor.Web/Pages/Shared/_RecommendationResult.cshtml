@@ -1,0 +1,26 @@
+@model FinAdvisor.Core.Models.HasilRekomendasi
+
+<section class="card result result-@Model.Jenis.ToString().ToLowerInvariant()" id="hasil">
+    <div class="result-header">
+        <div>
+            <p class="eyebrow">Hasil Rekomendasi</p>
+            <h2>@Model.Jenis</h2>
+            <p>@Model.Penjelasan</p>
+        </div>
+        <div class="score-ring"><span>@Model.SkorKesesuaian</span><small>confidence</small></div>
+    </div>
+    <div class="result-actions">
+        <button class="btn-secondary" onclick="window.print()">Export PDF / Print</button>
+        <a class="btn-secondary" asp-page="/Umkm/History">Lihat Riwayat</a>
+    </div>
+    <div class="detail-grid">
+        <div><h3>Rule Aktif</h3><p class="rule-code">@Model.KodeAturan</p></div>
+        <div><h3>Estimasi Proses</h3><p>@Model.EstimasiProses</p></div>
+        <div><h3>Fakta yang Cocok</h3><ul>@foreach (var item in Model.FaktaTerpenuhi) { <li>@item</li> }</ul></div>
+        <div><h3>Keuntungan</h3><ul>@foreach (var item in Model.Keuntungan) { <li>@item</li> }</ul></div>
+        <div><h3>Risiko</h3><ul>@foreach (var item in Model.Risiko) { <li>@item</li> }</ul></div>
+        <div><h3>Persyaratan</h3><ul>@foreach (var item in Model.Persyaratan) { <li>@item</li> }</ul></div>
+        <div><h3>Checklist Dokumen</h3><ul>@foreach (var item in Model.ChecklistDokumen) { <li>@item</li> }</ul></div>
+        <div><h3>Saran Berikutnya</h3><ul>@foreach (var item in Model.SaranTambahan) { <li>@item</li> }</ul></div>
+    </div>
+</section>

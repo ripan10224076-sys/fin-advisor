@@ -1,0 +1,62 @@
+@page
+@model FinAdvisor.Web.Pages.Admin.RulesModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Admin Rule";
+}
+
+<section class="workspace-grid admin-grid">
+    <div class="card">
+        <div class="section-heading">
+            <p class="eyebrow">Area Admin</p>
+            <h1>Kelola Aturan</h1>
+        </div>
+        <form method="post" asp-page-handler="Save" data-loading>
+            <input type="hidden" asp-for="Form.Id" />
+            <div class="form-grid">
+                <div class="form-group">
+                    <label asp-for="Form.Code">Kode</label>
+                    <input asp-for="Form.Code" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Form.Name">Nama rule</label>
+                    <input asp-for="Form.Name" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Form.Recommendation">Rekomendasi</label>
+                    <select asp-for="Form.Recommendation" asp-items="Html.GetEnumSelectList<RekomendasiJenis>()"></select>
+                </div>
+                <div class="form-group checkbox-line">
+                    <input asp-for="Form.IsActive" type="checkbox" />
+                    <label asp-for="Form.IsActive">Aktif</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Form.ConditionsJson">Kondisi JSON</label>
+                <textarea asp-for="Form.ConditionsJson" rows="9"></textarea>
+                <p class="hint">Format: [{"FactName":"ArusKas","ExpectedValue":"Stabil"}]. FactName yang tersedia: ArusKas, Agunan, Dana, RiwayatKredit, Legalitas, ButuhDanaCepat.</p>
+            </div>
+            <button type="submit" class="btn-primary">Simpan Rule</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>Daftar Rule</h2>
+        <div class="rule-list">
+            @foreach (var rule in Model.Rules)
+            {
+                <article class="rule-item">
+                    <div>
+                        <strong>@rule.Code - @rule.Name</strong>
+                        <p>@rule.Recommendation · @(rule.IsActive ? "Aktif" : "Nonaktif")</p>
+                    </div>
+                    <div class="row-actions">
+                        <a class="btn-secondary" asp-page="/Admin/Rules" asp-route-editId="@rule.Id">Ubah</a>
+                        <form method="post" asp-page-handler="Toggle" asp-route-id="@rule.Id"><button class="btn-secondary" type="submit">Aktif/Nonaktif</button></form>
+                        <form method="post" asp-page-handler="Delete" asp-route-id="@rule.Id"><button class="btn-danger" type="submit">Hapus</button></form>
+                    </div>
+                </article>
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FIN-ADVISOR Admin</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="app-layout admin-layout">
+        <aside class="app-sidebar admin-sidebar">
+            <a class="brand sidebar-brand" asp-page="/Admin/Dashboard">
+                <span class="brand-mark">FA</span>
+                <span><strong>FIN-ADVISOR</strong><small>Admin Console</small></span>
+            </a>
+            <nav class="side-nav">
+                <a asp-page="/Admin/Dashboard">Dashboard</a>
+                <a asp-page="/Admin/Users">Kelola User</a>
+                <a asp-page="/Admin/Rules">Kelola Rule</a>
+                <a asp-page="/Admin/Knowledge">Knowledge Base</a>
+                <a asp-page="/Admin/Applications">Kelola Pengajuan</a>
+                <a asp-page="/Admin/Reports">Laporan</a>
+                <a asp-page="/Admin/Statistics">Statistik</a>
+                <a asp-page="/Admin/Settings">Pengaturan</a>
+                <a asp-page="/Admin/Profile">Profil</a>
+            </nav>
+            <form method="post" asp-page="/Logout">
+                <button class="btn-secondary full-button" type="submit">Logout</button>
+            </form>
+        </aside>
+        <div class="app-main">
+            <header class="app-header">
+                <div>
+                    <p class="eyebrow">Administrator</p>
+                    <strong>@User.Identity?.Name</strong>
+                </div>
+                <button class="icon-button" type="button" id="themeToggle" title="Dark mode">DM</button>
+            </header>
+            <main class="page-shell app-content">
+                @if (TempData["Toast"] is string toast)
+                {
+                    <div class="toast">@toast</div>
+                }
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+    <script src="~/js/site.js"></script>
+</body>
+</html>

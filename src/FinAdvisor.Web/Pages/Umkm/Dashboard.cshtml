@@ -1,0 +1,66 @@
+@page "/umkm/dashboard"
+@model FinAdvisor.Web.Pages.Umkm.DashboardModel
+@{
+    Layout = "_CustomerLayout";
+    ViewData["Title"] = "Dashboard UMKM";
+}
+
+<section class="hero-panel customer-hero">
+    <div>
+        <p class="eyebrow">Selamat datang</p>
+        <h1>@Model.Profile.BusinessName</h1>
+        <p class="hero-copy">Kelola profil usaha, lakukan konsultasi pembiayaan, dan pantau riwayat rekomendasi FIN-ADVISOR dari satu tempat.</p>
+        <div class="result-actions">
+            <a class="btn-primary" asp-page="/Umkm/Consultation">Mulai Konsultasi</a>
+            <a class="btn-secondary" asp-page="/Umkm/Profile">Lengkapi Profil</a>
+        </div>
+    </div>
+    <div class="stats-grid">
+        <div class="stat-card"><span>@Model.RecentConsultations.Count</span><small>Riwayat terbaru</small></div>
+        <div class="stat-card"><span>@Model.Profile.BusinessType</span><small>Jenis usaha</small></div>
+        <div class="stat-card"><span>@Model.Profile.FinancingPurpose</span><small>Tujuan dana</small></div>
+    </div>
+</section>
+
+<section class="dashboard-grid">
+    <div class="card">
+        <h2>Profil Usaha</h2>
+        <div class="profile-strip">
+            <span>Pemilik: @Model.Profile.OwnerName</span>
+            <span>Kontak: @Model.Profile.Phone</span>
+            <span>Omzet: @Model.Profile.MonthlyRevenue</span>
+            <span>Alamat: @Model.Profile.Address</span>
+        </div>
+    </div>
+    <div class="card">
+        <h2>Tips Pembiayaan</h2>
+        <ul>
+            <li>Rapikan catatan pemasukan dan pengeluaran sebelum mengajukan pembiayaan.</li>
+            <li>Pastikan legalitas usaha sesuai kebutuhan nominal dana.</li>
+            <li>Bandingkan biaya, tenor, dan risiko sebelum memilih lembaga pembiayaan.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="card">
+    <div class="section-heading">
+        <p class="eyebrow">Riwayat Singkat</p>
+        <h2>Konsultasi Terbaru</h2>
+    </div>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Tanggal</th><th>Rekomendasi</th><th>Rule</th><th>Skor</th></tr></thead>
+            <tbody>
+            @foreach (var item in Model.RecentConsultations)
+            {
+                <tr>
+                    <td>@item.CreatedAt.ToString("dd MMM yyyy HH:mm")</td>
+                    <td><span class="badge">@item.Recommendation</span></td>
+                    <td>@item.RuleCode</td>
+                    <td>@item.Score</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</section>

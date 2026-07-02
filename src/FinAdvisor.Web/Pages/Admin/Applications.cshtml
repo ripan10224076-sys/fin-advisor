@@ -1,0 +1,32 @@
+@page "/admin/applications"
+@model FinAdvisor.Web.Pages.Admin.ApplicationsModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Kelola Pengajuan";
+}
+
+<section class="card">
+    <div class="section-heading">
+        <p class="eyebrow">Kelola Pengajuan</p>
+        <h1>Daftar Konsultasi dan Pengajuan</h1>
+        <p class="hint">Setiap konsultasi dianggap sebagai pengajuan awal yang dapat dipantau admin.</p>
+    </div>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Tanggal</th><th>UMKM</th><th>Rekomendasi</th><th>Rule</th><th>Skor</th><th>Status</th></tr></thead>
+            <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.CreatedAt.ToString("dd MMM yyyy HH:mm")</td>
+                    <td>@item.BusinessName</td>
+                    <td><span class="badge">@item.Recommendation</span></td>
+                    <td>@item.RuleCode</td>
+                    <td>@item.Score</td>
+                    <td><span class="badge">Terekam</span></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</section>

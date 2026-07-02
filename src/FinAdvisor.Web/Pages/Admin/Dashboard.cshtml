@@ -1,0 +1,80 @@
+@page "/admin/dashboard"
+@model FinAdvisor.Web.Pages.Admin.DashboardModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Dashboard Admin";
+}
+
+<section class="admin-hero card">
+    <div>
+        <p class="eyebrow">Monitoring Sistem</p>
+        <h1>Dashboard Admin</h1>
+        <p class="hint">Pantau pengguna, konsultasi, rule aktif, dan aktivitas terbaru FIN-ADVISOR.</p>
+    </div>
+    <div class="result-actions">
+        <a class="btn-primary" asp-page="/Admin/Rules">Kelola Rule</a>
+        <a class="btn-secondary" asp-page="/Admin/Users">Kelola User</a>
+        <a class="btn-secondary" asp-page="/Admin/Applications">Kelola Pengajuan</a>
+    </div>
+</section>
+
+<section class="admin-stats">
+    <div class="stat-card"><span>@Model.Stats.TotalUsers</span><small>Total User</small></div>
+    <div class="stat-card"><span>@Model.Stats.TotalCustomers</span><small>Total UMKM</small></div>
+    <div class="stat-card"><span>@Model.Stats.TotalConsultations</span><small>Total Konsultasi</small></div>
+    <div class="stat-card"><span>@Model.Stats.TotalRules</span><small>Total Rule</small></div>
+    <div class="stat-card"><span>@Model.Stats.ActiveRules</span><small>Rule Aktif</small></div>
+    <div class="stat-card"><span>@Model.Stats.TodayConsultations</span><small>Pengajuan Hari Ini</small></div>
+</section>
+
+<section class="dashboard-grid">
+    <div class="card chart-card">
+        <div class="section-heading">
+            <p class="eyebrow">Grafik Pengguna</p>
+            <h2>Perkembangan Platform</h2>
+        </div>
+        <div class="bar-chart">
+            <span style="height: 42%"></span>
+            <span style="height: 58%"></span>
+            <span style="height: 75%"></span>
+            <span style="height: 63%"></span>
+            <span style="height: 86%"></span>
+            <span style="height: 92%"></span>
+        </div>
+    </div>
+    <div class="card">
+        <div class="section-heading">
+            <p class="eyebrow">Notifikasi</p>
+            <h2>Perhatian Admin</h2>
+        </div>
+        <ul>
+            <li>Pastikan rule aktif sesuai hasil validasi pakar.</li>
+            <li>Tinjau konsultasi dengan skor rendah untuk perbaikan edukasi user.</li>
+            <li>Perbarui knowledge base jika ada kebijakan pembiayaan baru.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="card">
+    <div class="section-heading">
+        <p class="eyebrow">Aktivitas Terbaru</p>
+        <h2>Konsultasi Terakhir</h2>
+    </div>
+    <div class="table-wrap">
+        <table>
+            <thead><tr><th>Tanggal</th><th>UMKM</th><th>Rekomendasi</th><th>Rule</th><th>Skor</th></tr></thead>
+            <tbody>
+            @foreach (var item in Model.RecentActivities)
+            {
+                <tr>
+                    <td>@item.CreatedAt.ToString("dd MMM yyyy HH:mm")</td>
+                    <td>@item.BusinessName</td>
+                    <td><span class="badge">@item.Recommendation</span></td>
+                    <td>@item.RuleCode</td>
+                    <td>@item.Score</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</section>

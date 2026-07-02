@@ -1,0 +1,14 @@
+@page "/logout"
+@model FinAdvisor.Web.Pages.LogoutModel
+@{
+    Layout = "_PublicLayout";
+    ViewData["Title"] = "Logout";
+}
+
+<section class="card readable">
+    <h1>Keluar dari akun</h1>
+    <p>Gunakan tombol di bawah untuk keluar dari sesi FIN-ADVISOR.</p>
+    <form method="post">
+        <button class="btn-primary" type="submit">Logout</button>
+    </form>
+</section>

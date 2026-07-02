@@ -1,0 +1,40 @@
+@page "/umkm/profile"
+@model FinAdvisor.Web.Pages.Umkm.ProfileModel
+@{
+    Layout = "_CustomerLayout";
+    ViewData["Title"] = "Profil UMKM";
+}
+
+<section class="workspace-grid profile-grid">
+    <div class="card">
+        <div class="section-heading">
+            <p class="eyebrow">Profil UMKM</p>
+            <h1>Data Usaha</h1>
+        </div>
+        <form method="post" data-loading>
+            <input type="hidden" asp-for="Profile.Id" />
+            <div asp-validation-summary="ModelOnly" class="validation"></div>
+            <div class="form-grid">
+                <div class="form-group"><label asp-for="Profile.BusinessName">Nama usaha</label><input asp-for="Profile.BusinessName" /><span asp-validation-for="Profile.BusinessName" class="validation"></span></div>
+                <div class="form-group"><label asp-for="Profile.OwnerName">Nama pemilik</label><input asp-for="Profile.OwnerName" /><span asp-validation-for="Profile.OwnerName" class="validation"></span></div>
+                <div class="form-group"><label asp-for="Profile.Phone">Nomor kontak</label><input asp-for="Profile.Phone" /><span asp-validation-for="Profile.Phone" class="validation"></span></div>
+                <div class="form-group"><label asp-for="Profile.BusinessType">Jenis usaha</label><input asp-for="Profile.BusinessType" /><span asp-validation-for="Profile.BusinessType" class="validation"></span></div>
+                <div class="form-group"><label asp-for="Profile.MonthlyRevenue">Omzet bulanan</label><input asp-for="Profile.MonthlyRevenue" /></div>
+                <div class="form-group"><label asp-for="Profile.FinancingPurpose">Tujuan pembiayaan</label><input asp-for="Profile.FinancingPurpose" /></div>
+            </div>
+            <div class="form-group"><label asp-for="Profile.Address">Alamat usaha</label><textarea asp-for="Profile.Address" rows="4"></textarea><span asp-validation-for="Profile.Address" class="validation"></span></div>
+            <button class="btn-primary" type="submit">Simpan Profil</button>
+        </form>
+    </div>
+    <aside class="info-panel profile-summary">
+        <p class="eyebrow">Ringkasan</p>
+        <h2>@Model.Profile.BusinessName</h2>
+        <p>@Model.Profile.BusinessType</p>
+        <div class="profile-strip">
+            <span>Pemilik: @Model.Profile.OwnerName</span>
+            <span>Kontak: @Model.Profile.Phone</span>
+            <span>Omzet: @Model.Profile.MonthlyRevenue</span>
+            <span>Kebutuhan: @Model.Profile.FinancingPurpose</span>
+        </div>
+    </aside>
+</section>

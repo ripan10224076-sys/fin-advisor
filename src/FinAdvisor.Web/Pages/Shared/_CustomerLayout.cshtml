@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FIN-ADVISOR</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="app-sidebar">
+            <a class="brand sidebar-brand" asp-page="/Umkm/Dashboard">
+                <span class="brand-mark">FA</span>
+                <span><strong>FIN-ADVISOR</strong><small>Dashboard UMKM</small></span>
+            </a>
+            <nav class="side-nav">
+                <a asp-page="/Umkm/Dashboard">Dashboard</a>
+                <a asp-page="/Umkm/Consultation">Konsultasi AI</a>
+                <a asp-page="/Umkm/Profile">Profil UMKM</a>
+                <a asp-page="/Umkm/History">Riwayat</a>
+                <a asp-page="/Umkm/Recommendation">Rekomendasi</a>
+                <a asp-page="/Help">Bantuan</a>
+                <a asp-page="/About">Tentang</a>
+            </nav>
+            <form method="post" asp-page="/Logout">
+                <button class="btn-secondary full-button" type="submit">Logout</button>
+            </form>
+        </aside>
+        <div class="app-main">
+            <header class="app-header">
+                <div>
+                    <p class="eyebrow">Akun UMKM</p>
+                    <strong>@User.Identity?.Name</strong>
+                </div>
+                <button class="icon-button" type="button" id="themeToggle" title="Dark mode">DM</button>
+            </header>
+            <main class="page-shell app-content">
+                @if (TempData["Toast"] is string toast)
+                {
+                    <div class="toast">@toast</div>
+                }
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+    <script src="~/js/site.js"></script>
+</body>
+</html>

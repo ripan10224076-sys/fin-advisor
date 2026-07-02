@@ -1,0 +1,16 @@
+@page "/admin/profile"
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Profil Admin";
+}
+
+<section class="card readable">
+    <p class="eyebrow">Profil Admin</p>
+    <h1>@User.Identity?.Name</h1>
+    <p>Administrator bertanggung jawab mengelola rule, memantau aktivitas konsultasi, dan memastikan basis pengetahuan tetap relevan.</p>
+    <div class="profile-strip">
+        <span>Role: Administrator</span>
+        <span>Area: Monitoring dan Rule Management</span>
+        <span>Status: Aktif</span>
+    </div>
+</section>

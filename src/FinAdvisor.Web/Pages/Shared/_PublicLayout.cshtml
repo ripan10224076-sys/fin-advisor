@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FIN-ADVISOR</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header class="topbar">
+        <div class="shell nav-shell">
+            <a class="brand" asp-page="/Index">
+                <span class="brand-mark">FA</span>
+                <span>
+                    <strong>FIN-ADVISOR</strong>
+                    <small>Pembiayaan UMKM</small>
+                </span>
+            </a>
+            <nav class="nav-links">
+                <a asp-page="/Index">Beranda</a>
+                <a asp-page="/About">Tentang</a>
+                <a asp-page="/Features">Fitur</a>
+                <a href="/#faq">FAQ</a>
+                <a asp-page="/Contact">Kontak</a>
+                <a asp-page="/Login">Login</a>
+                <a asp-page="/Register">Daftar</a>
+            </nav>
+            <button class="icon-button" type="button" id="themeToggle" title="Dark mode">DM</button>
+        </div>
+    </header>
+
+    <main class="shell page-shell">
+        @if (TempData["Toast"] is string toast)
+        {
+            <div class="toast">@toast</div>
+        }
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <div class="shell">FIN-ADVISOR - Platform rekomendasi pembiayaan UMKM</div>
+    </footer>
+    <script src="~/js/site.js"></script>
+</body>
+</html>

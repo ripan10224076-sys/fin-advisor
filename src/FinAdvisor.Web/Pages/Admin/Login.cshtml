@@ -1,0 +1,38 @@
+@page "/admin/login"
+@model FinAdvisor.Web.Pages.Admin.LoginModel
+@{
+    Layout = "_PublicLayout";
+    ViewData["Title"] = "Login Admin";
+}
+
+<section class="auth-page admin-auth">
+    <div class="auth-copy">
+        <p class="eyebrow">Administrator</p>
+        <h1>Monitor aktivitas dan kelola basis aturan FIN-ADVISOR.</h1>
+        <p>Area ini khusus pengelola sistem. Gunakan akun administrator untuk mengakses dashboard monitoring dan rule management.</p>
+    </div>
+    <div class="auth-card">
+        <h2>Admin Login</h2>
+        <p class="hint">Masuk menggunakan akun administrator yang sudah terdaftar.</p>
+        <form method="post" data-loading>
+            <div asp-validation-summary="ModelOnly" class="validation"></div>
+            <div class="form-group">
+                <label asp-for="Input.Email">Email</label>
+                <input asp-for="Input.Email" autocomplete="email" />
+                <span asp-validation-for="Input.Email" class="validation"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Password">Password</label>
+                <input asp-for="Input.Password" type="password" autocomplete="current-password" />
+                <span asp-validation-for="Input.Password" class="validation"></span>
+            </div>
+            <label class="checkbox-inline"><input asp-for="Input.RememberMe" type="checkbox" /> Remember Me</label>
+            <button class="btn-primary full-button" type="submit">Login</button>
+        </form>
+        <div class="auth-divider"><span>Portal lain</span></div>
+        <div class="auth-links stacked-links">
+            <a asp-page="/Login">Masuk sebagai UMKM</a>
+            <a asp-page="/Register">Daftar akun UMKM</a>
+        </div>
+    </div>
+</section>
