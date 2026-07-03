@@ -4,7 +4,11 @@ WORKDIR /src
 COPY . .
 
 RUN dotnet restore FinAdvisor.sln
-RUN dotnet publish FinAdvisor.sln -c Release -o /app/publish
+
+RUN dotnet publish src/FinAdvisor.Web/FinAdvisor.Web.csproj \
+    -c Release \
+    -o /app/publish \
+    --no-restore
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 
@@ -16,4 +20,4 @@ ENV ASPNETCORE_URLS=http://+:10000
 
 EXPOSE 10000
 
-ENTRYPOINT ["dotnet","FinAdvisor.Web.dll"]
+ENTRYPOINT ["dotnet", "FinAdvisor.Web.dll"]
